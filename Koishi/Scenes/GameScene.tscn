@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://d08ffik75y10i"]
+
+[ext_resource type="PackedScene" uid="uid://dk4thihvu5kes" path="res://Scenes/Basic.tscn" id="1_f8tri"]
+[ext_resource type="Texture2D" uid="uid://dtswp20k1l2ya" path="res://Sprites/VoidParalax.png" id="1_i7b6h"]
+[ext_resource type="Shader" path="res://Shader/Paralax.gdshader" id="2_iajqc"]
+[ext_resource type="Texture2D" uid="uid://blhe8euwieo84" path="res://Sprites/ParalaxLines3.png" id="3_usa5f"]
+[ext_resource type="PackedScene" uid="uid://ftp8xrii38c5" path="res://Scenes/bubbly_control.tscn" id="4_vp514"]
+[ext_resource type="Texture2D" uid="uid://dqp2yertxtx0n" path="res://Sprites/Fish1.png" id="6_cug4l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ja01a"]
+shader = ExtResource("2_iajqc")
+shader_parameter/direction = Vector2(0.5, 0.5)
+shader_parameter/speed_scale = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cpro"]
+size = Vector2(439, 20)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+
+[node name="Void" type="ParallaxLayer" parent="ParallaxBackground"]
+scale = Vector2(40, 21)
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Void"]
+texture = ExtResource("1_i7b6h")
+centered = false
+
+[node name="Lines" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(4, 4)
+motion_mirroring = Vector2(256, 256)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Lines"]
+clip_children = 2
+material = SubResource("ShaderMaterial_ja01a")
+texture = ExtResource("3_usa5f")
+centered = false
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_f8tri")]
+position = Vector2(438, 521)
+
+[node name="BubblyControl" parent="." instance=ExtResource("4_vp514")]
+position = Vector2(603, 315)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(224, 645)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(209.5, 0)
+scale = Vector2(1, 2.48)
+shape = SubResource("RectangleShape2D_4cpro")
+
+[node name="Fish1" type="Sprite2D" parent="."]
+position = Vector2(147, 250)
+texture = ExtResource("6_cug4l")
+
+[connection signal="bluesignal" from="BubblyControl" to="CharacterBody2D" method="_on_bubbly_control_bluesignal"]
+[connection signal="greensignal" from="BubblyControl" to="CharacterBody2D" method="_on_bubbly_control_greensignal"]
+[connection signal="redsignal" from="BubblyControl" to="CharacterBody2D" method="_on_bubbly_control_redsignal"]

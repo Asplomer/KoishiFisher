@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://ftp8xrii38c5"]
+
+[ext_resource type="Script" path="res://WeirdControl.gd" id="1_agr7o"]
+[ext_resource type="Texture2D" uid="uid://d26hvqm0rymp1" path="res://Sprites/wat.png" id="2_euxoj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a4yu6"]
+
+[node name="BubblyControl" type="Node2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_agr7o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, -4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_euxoj")
+
+[node name="RoundGreen" type="Node2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="AreaGreen" type="Area2D" parent="RoundGreen"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoundGreen/AreaGreen"]
+shape = SubResource("CircleShape2D_a4yu6")
+
+[node name="RoundRed" type="Node2D" parent="."]
+position = Vector2(8, 5)
+
+[node name="AreaRed" type="Area2D" parent="RoundRed"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoundRed/AreaRed"]
+shape = SubResource("CircleShape2D_a4yu6")
+
+[node name="RoundBlue" type="Node2D" parent="."]
+position = Vector2(-8, 5)
+
+[node name="AreaBlue" type="Area2D" parent="RoundBlue"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoundBlue/AreaBlue"]
+shape = SubResource("CircleShape2D_a4yu6")
+
+[connection signal="mouse_entered" from="RoundGreen/AreaGreen" to="." method="_on_area_green_mouse_entered"]
+[connection signal="mouse_exited" from="RoundGreen/AreaGreen" to="." method="_on_area_green_mouse_exited"]
+[connection signal="mouse_entered" from="RoundRed/AreaRed" to="." method="_on_area_red_mouse_entered"]
+[connection signal="mouse_exited" from="RoundRed/AreaRed" to="." method="_on_area_red_mouse_exited"]
+[connection signal="mouse_entered" from="RoundBlue/AreaBlue" to="." method="_on_area_blue_mouse_entered"]
+[connection signal="mouse_exited" from="RoundBlue/AreaBlue" to="." method="_on_area_blue_mouse_exited"]
