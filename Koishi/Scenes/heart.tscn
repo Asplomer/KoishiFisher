@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5gchrd25yfay"]
+
+[ext_resource type="Script" path="res://Heart.gd" id="1_2ftbr"]
+[ext_resource type="Texture2D" uid="uid://dxnhjn3324uuh" path="res://Sprites/Koi Eye V2.png" id="2_42x8y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4ftf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_42x8y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13rku"]
+
+[node name="Heart" type="CharacterBody2D"]
+script = ExtResource("1_2ftbr")
+speed = 500.0
+focused_speed = 250.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2.125)
+sprite_frames = SubResource("SpriteFrames_w4ftf")
+frame_progress = 0.704998
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.475, 1.475)
+shape = SubResource("CircleShape2D_13rku")
