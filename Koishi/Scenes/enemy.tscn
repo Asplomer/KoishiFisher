@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciumxjk3jgm70"]
+[gd_scene load_steps=4 format=3 uid="uid://ciumxjk3jgm70"]
 
 [ext_resource type="Texture2D" uid="uid://dqp2yertxtx0n" path="res://Sprites/Fish1.png" id="1_3ammi"]
+[ext_resource type="PackedScene" uid="uid://bueihxiw8lclx" path="res://bullet_spawner.tscn" id="2_h5psa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_txqic"]
 animations = [{
@@ -13,28 +14,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m3aqa"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iu7w6"]
-particle_flag_disable_z = true
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 0.0
-emission_ring_radius = 150.0
-emission_ring_inner_radius = 150.0
-spread = 0.0
-initial_velocity_min = 150.0
-initial_velocity_max = 150.0
-gravity = Vector3(0, 0, 0)
-scale_min = 25.0
-scale_max = 25.0
-
 [node name="Enemy" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_txqic")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_m3aqa")
-amount = 120
-process_material = SubResource("ParticleProcessMaterial_iu7w6")
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Bullet Spawner" parent="." instance=ExtResource("2_h5psa")]
+position = Vector2(58, 14)

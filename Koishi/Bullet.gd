@@ -5,7 +5,10 @@ var damage : int = 1
 
 func _process(delta):
 	translate(speed * delta * direction)
+#	if not get_viewport_rect().intersects(get_global_rect()):
+#		queue_free()  # Delete the bullet.
 	pass
+
 
 func set_direction(dir : Vector2):
 	direction = dir

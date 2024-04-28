@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dtswp20k1l2ya" path="res://Sprites/VoidParalax.png" id="1_i7b6h"]
 [ext_resource type="Shader" path="res://Shader/Paralax.gdshader" id="2_iajqc"]
 [ext_resource type="Texture2D" uid="uid://blhe8euwieo84" path="res://Sprites/ParalaxLines3.png" id="3_usa5f"]
-[ext_resource type="Texture2D" uid="uid://dqp2yertxtx0n" path="res://Sprites/Fish1.png" id="6_cug4l"]
+[ext_resource type="PackedScene" uid="uid://ciumxjk3jgm70" path="res://Scenes/enemy.tscn" id="6_dfmcc"]
 [ext_resource type="PackedScene" uid="uid://c5gchrd25yfay" path="res://Scenes/heart.tscn" id="6_k1e23"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ja01a"]
@@ -41,9 +41,8 @@ centered = false
 visible = false
 position = Vector2(438, 521)
 
-[node name="Fish1" type="Sprite2D" parent="."]
-position = Vector2(147, 250)
-texture = ExtResource("6_cug4l")
-
 [node name="Heart" parent="." instance=ExtResource("6_k1e23")]
 position = Vector2(1079, 298)
+
+[node name="Enemy" parent="." instance=ExtResource("6_dfmcc")]
+position = Vector2(198, 290)
