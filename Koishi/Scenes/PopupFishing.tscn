@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://uae0qnx40tmv"]
+
+[ext_resource type="Script" path="res://Scenes/PopupFishing.gd" id="1_06nd6"]
+[ext_resource type="PackedScene" uid="uid://c5gchrd25yfay" path="res://Scenes/heart.tscn" id="1_btriy"]
+
+[node name="Window" type="Window"]
+size = Vector2i(1000, 1000)
+borderless = true
+transparent = true
+unfocusable = true
+popup_window = true
+script = ExtResource("1_06nd6")
+
+[node name="Heart" parent="." instance=ExtResource("1_btriy")]
+position = Vector2(70, 60)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

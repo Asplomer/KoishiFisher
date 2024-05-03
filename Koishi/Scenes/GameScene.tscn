@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d08ffik75y10i"]
+[gd_scene load_steps=7 format=3 uid="uid://d08ffik75y10i"]
 
 [ext_resource type="PackedScene" uid="uid://dk4thihvu5kes" path="res://Scenes/Basic.tscn" id="1_f8tri"]
 [ext_resource type="Texture2D" uid="uid://dtswp20k1l2ya" path="res://Sprites/VoidParalax.png" id="1_i7b6h"]
 [ext_resource type="Shader" path="res://Shader/Paralax.gdshader" id="2_iajqc"]
 [ext_resource type="Texture2D" uid="uid://blhe8euwieo84" path="res://Sprites/ParalaxLines3.png" id="3_usa5f"]
-[ext_resource type="PackedScene" uid="uid://ciumxjk3jgm70" path="res://Scenes/enemy.tscn" id="6_dfmcc"]
-[ext_resource type="PackedScene" uid="uid://c5gchrd25yfay" path="res://Scenes/heart.tscn" id="6_k1e23"]
+[ext_resource type="PackedScene" uid="uid://uae0qnx40tmv" path="res://Scenes/PopupFishing.tscn" id="5_sagxw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ja01a"]
 shader = ExtResource("2_iajqc")
@@ -41,8 +40,7 @@ centered = false
 visible = false
 position = Vector2(438, 521)
 
-[node name="Heart" parent="." instance=ExtResource("6_k1e23")]
-position = Vector2(1079, 298)
-
-[node name="Enemy" parent="." instance=ExtResource("6_dfmcc")]
-position = Vector2(198, 290)
+[node name="Window" parent="." instance=ExtResource("5_sagxw")]
+mode = 2
+initial_position = 1
+size = Vector2i(1152, 648)
